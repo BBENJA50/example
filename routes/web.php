@@ -13,7 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->get(); //prevents lazy loading
+    $jobs = Job::with('employer')->simplePaginate(3); //prevents lazy loading
 
     return view('jobs', [
         'jobs' => $jobs,
